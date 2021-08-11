@@ -27,7 +27,7 @@ main(int argc, char **argv)
          "\n"
                            "Syntax:  TWEAK2C <TWEAK-file> <C file to create> <array name>\n"
          "All parameters are required.\n"
-         );
+    );
 
     return 0;
   }
@@ -41,16 +41,16 @@ main(int argc, char **argv)
 
   out << "#include \"TwkUser.h\" // get Register definition" << endl;
   out << "Register " << argv[3] << "[] =" << endl;
-  out << "\t{" << hex << endl;
+  out << "{" << hex << endl;
 
   Register *reg = table;
   while (regs--)
   {
-    out << "\t{ 0x" << reg->port << ", 0x" << int(reg->index)
+    out << "  { 0x" << reg->port << ", 0x" << int(reg->index)
       << ", 0x" << int(reg->value) << (regs?"},\n":"}\n");
     reg++;
   }
-  out << "\t};" << endl;
+  out << "};" << endl;
 
   free(table);
 
