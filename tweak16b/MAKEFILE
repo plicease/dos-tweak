@@ -5,9 +5,8 @@
 
 CC = bcc -ml -v -y -O -O2
 
-all: tweak utilities examples oldtweak
+all: tweak utilities examples
 tweak: tweak.exe
-oldtweak: tweak095.exe
 examples: example1.exe example2.exe
 utilities: tweak2c.exe 09to10.exe
 
