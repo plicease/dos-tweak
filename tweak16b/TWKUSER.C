@@ -7,7 +7,7 @@
 #include "TwkUser.h"
 
 /*
-    readyVgaRegs() does the initialization to make the VGA ready to
+  readyVgaRegs() does the initialization to make the VGA ready to
   accept any combination of configuration register settings.
 
   This involves enabling writes to index 0 to 7 of the CRT controller
@@ -19,7 +19,7 @@ void readyVgaRegs(void)
 {
   int v;
   outportb(0x3d4,0x11);
-    v = inportb(0x3d5) & 0x7f;
+  v = inportb(0x3d5) & 0x7f;
   outportb(0x3d4,0x11);
   outportb(0x3d5,v);
 }
@@ -65,7 +65,7 @@ void outReg(Register r)
 
 void outRegArray(Register *r, int n)
 {
-    readyVgaRegs();
+  readyVgaRegs();
   while (n--)
     outReg(*r++);
 }
@@ -99,9 +99,10 @@ int loadRegArray(char *fpath, RegisterPtr *array)
     /* include your error handling code here */
     goto fileerror;
 
-    if ((fsize = filelength(handle)) == -1)
+  if ((fsize = filelength(handle)) == -1)
     /* error acquiring file size */
     goto fileerror;
+
   if (fsize % sizeof(Register))
   {
     printf("Illegal TWEAK file size: %s\n", fpath);
@@ -109,7 +110,7 @@ int loadRegArray(char *fpath, RegisterPtr *array)
   }
   regs = fsize / sizeof(Register);
 
-    if (!(*array = (Register *)malloc(fsize)))
+  if (!(*array = (Register *)malloc(fsize)))
   {
     printf("Out of memory allocating buffer for %s\n", fpath);
     return 0;
