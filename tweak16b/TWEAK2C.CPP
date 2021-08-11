@@ -47,7 +47,7 @@ main(int argc, char **argv)
   while (regs--)
   {
     out << "  { 0x" << reg->port << ", 0x" << int(reg->index)
-      << ", 0x" << int(reg->value) << (regs?"},\n":"}\n");
+      << ", 0x" << int(reg->value) << (regs?" },\n":" }\n");
     reg++;
   }
   out << "};" << endl;
